@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Details</title>
+</head>
+
+<body>
+
+    <%- include('./partials/navbar') %>
+
+        <h1>Flower Details</h1>
+
+        <p>
+            <strong>Name:</strong>
+            <%= flower.name %>
+        </p>
+
+        <p>
+            <strong>Price:</strong>
+            <%= flower.price !=null ? flower.price : 'Not specified' %>
+        </p>
+
+        <p>
+            <strong>Availability:</strong>
+            <%= flower.inStock ? 'In Stock' : 'Out of Stock' %>
+        </p>
+
+        <p>
+            <strong>Best Before:</strong>
+            <%= flower.bestBefore ? flower.bestBefore.toISOString().slice(0, 10) : 'Not specified' %>
+        </p>
+
+        <p>
+            <strong>Created At:</strong>
+            <%= flower.createdAt ? flower.createdAt.toLocaleString() : 'Not available' %>
+        </p>
+
+        <p>
+            <strong>Last Updated:</strong>
+            <%= flower.updatedAt ? flower.updatedAt.toLocaleString() : 'Not available' %>
+        </p>
+
+        <form action="/flowers/<%= flower._id %>/edit" method="GET">
+            <button type="submit">Edit Flower</button>
+        </form>
+
+        <br>
+
+        <form action="/flowers/<%= flower._id %>?_method=DELETE" method="POST"
+            onsubmit="return confirm('Are you sure you want to delete this flower?')">
+            <button type="submit">Delete Flower</button>
+        </form>
+
+</body>
+
+</html>

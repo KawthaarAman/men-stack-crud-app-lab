@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Flowers</title>
+</head>
+
+<body>
+
+    <%- include('./partials/navbar') %>
+
+        <h1>All Flowers</h1>
+
+        <% if (flowers.length===0) { %>
+
+            <p>No flowers found. Add your first flower!</p>
+
+            <% } %>
+
+                <% for (let oneFlower of flowers) { %>
+
+                    <hr>
+
+                    <h2>
+                        <%= oneFlower.name %>
+                    </h2>
+
+                    <p>
+                        <strong>Price:</strong>
+                        <%= oneFlower.price !=null ? oneFlower.price : 'Not specified' %>
+                    </p>
+
+                    <p>
+                        <strong>Availability:</strong>
+                        <%= oneFlower.inStock ? 'In Stock' : 'Out of Stock' %>
+                    </p>
+
+                    <p>
+                        <strong>Best Before:</strong>
+                        <%= oneFlower.bestBefore ? oneFlower.bestBefore.toISOString().slice(0, 10) : 'Not specified' %>
+                    </p>
+
+                    <a href="/flowers/<%= oneFlower._id %>">See Flower Details</a>
+
+                    <% } %>
+
+</body>
+
+</html>

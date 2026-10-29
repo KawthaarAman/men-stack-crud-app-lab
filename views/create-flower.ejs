@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Flower</title>
+</head>
+
+<body>
+
+    <%- include('./partials/navbar') %>
+
+        <h1>Create New Flower</h1>
+
+        <form action="/flowers" method="POST">
+
+            <label for="name">Flower Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="price">Price:</label>
+            <input type="number" name="price" id="price" min="0" step="0.01">
+
+            <label for="inStock">In Stock:</label>
+            <input type="checkbox" name="inStock" id="inStock" checked>
+
+            <label for="bestBefore">Best Before:</label>
+            <input type="date" name="bestBefore" id="bestBefore">
+
+            <button type="submit">Create Flower</button>
+
+        </form>
+
+</body>
+
+</html>
